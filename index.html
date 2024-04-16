@@ -5,17 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper and Scissors</title>
+    <link rel="shortcut icon" href="./favicon-32x32.png" type="image/x-icon">
     <script src="./main.js" defer></script>
-    <style>
-        body {
-            background-color: #333;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+    <header>
+        <h1>ROCK PAPER SCISSORS</h1>
+    </header>
+    <main>
+        <h2 class="title">Choose your weapon</h2>
+        <p class="detail">First to score 5 points wins the game</p>
 
+        <div class="live-game">
+            <div id="human">
+                <div class="selected">?</div>
+                <p class="name">Player: <span class="score">0</span></p>
+            </div>
+            <div id="computer">
+                <div class="selected">?</div>
+                <p class="name">Computer: <span class="score">0</span></p>
+            </div>
+        </div>
+
+        <div class="weapons">
+            <div data-weapon="Rock" class="rock-weapon">👊</div>
+            <div data-weapon="Paper" class="paper-weapon">🖐️</div>
+            <div data-weapon="Scissors" class="scissors-weapon">✌️</div>
+        </div>
+
+        <div class="overlay">
+            <div class="container">
+                <h2 class="result"></h2>
+                <button class="play-again">Play again</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Copyright © 2024 Hieuhocit</p>
+    </footer>
 </body>
 
 </html>
