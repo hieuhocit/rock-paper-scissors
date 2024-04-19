@@ -20,28 +20,37 @@ function playGame(e) {
     const playerSelection = e.target.dataset.weapon;
     const computerSelection = getComputerChoice();
 
-    const result = playRound(playerSelection, computerSelection);
+    const animation = setInterval(() => {
+        const randomWeapon = getComputerChoice();
+        if (randomWeapon === computerSelection) {
+            clearInterval(animation);
+            const result = playRound(playerSelection, computerSelection);
 
-    if (result.title.includes("You won!")) {
-        player1Score++;
-    } else if (result.title.includes("You lost!")) {
-        player2Score++;
-    }
+            if (result.title.includes("You won!")) {
+                player1Score++;
+            } else if (result.title.includes("You lost!")) {
+                player2Score++;
+            }
 
-    title.textContent = result.title;
-    detail.textContent = result.detail;
+            title.textContent = result.title;
+            detail.textContent = result.detail;
 
-    humanSelected.textContent = weaponIcons.get(playerSelection);
-    computerSelected.textContent = weaponIcons.get(computerSelection);
+            humanSelected.textContent = weaponIcons.get(playerSelection);
+            computerSelected.textContent = weaponIcons.get(computerSelection);
 
-    humanScore.textContent = player1Score;
-    computerScore.textContent = player2Score;
+            humanScore.textContent = player1Score;
+            computerScore.textContent = player2Score;
 
-    if (player1Score >= 5) {
-        gameOver("Yow won!");
-    } else if (player2Score >= 5) {
-        gameOver("You lost...");
-    }
+            if (player1Score >= 5) {
+                gameOver("Yow won!");
+            } else if (player2Score >= 5) {
+                gameOver("You lost...");
+            }
+        } else {
+            humanSelected.textContent = weaponIcons.get(playerSelection);
+            computerSelected.textContent = weaponIcons.get(randomWeapon);
+        }
+    }, 100);
 }
 
 function gameOver(result) {
@@ -55,7 +64,6 @@ function gameOver(result) {
     btnAgain.addEventListener("click", () => {
         overlay.classList.remove("active");
     });
-
     reset();
 }
 

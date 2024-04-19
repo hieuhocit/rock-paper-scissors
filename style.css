@@ -69,6 +69,7 @@ p {
 
 .selected {
     font-size: 6rem;
+    transition: all 0.2 ease;
 }
 
 .weapons {
